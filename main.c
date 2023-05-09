@@ -5,11 +5,9 @@
 
 int main() {
 	char* links[] = {
-		"https://www.linkedin.com/feed/",
-		"https://itch.io/dashboard",
-		"https://twitter.com/home",
-		"https://mail.google.com/mail/u/0/#inbox",
-		"https://www.youtube.com/"
+		"https://en.wikipedia.org/wiki/C_(programming_language)",
+		"https://example.com/",
+		"https://en.wikipedia.org/wiki/Memory_leak",
 	};
 	for (int i = 0; i < ARRAY_LENGTH(links); i++) {
 		switch (open_link(links[i])) {
