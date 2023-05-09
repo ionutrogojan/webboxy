@@ -11,7 +11,7 @@
 - [x] [Linux](https://github.com/ionutrogojan/webboxy/releases/tag/0.1.0) - v0.1.0
 - [] Windows
 - [] MacOS
-- [x] [Source]() - v0.1.0
+- [x] [Source](https://github.com/ionutrogojan/webboxy/releases/tag/0.1.0) - v0.1.0
 
 ---
 
