@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include "weblink.h"
 
-
 const char* provider(void) {
 	char* provider_list[] = {
 		"www-browser",
@@ -21,12 +20,19 @@ const char* provider(void) {
 	};
 	char* cmd;
 	for (int i = 0; i < ARRAY_LENGTH(provider_list); i++) {
-		int mem_cmd = asprintf(&cmd, "which %s > /dev/null 2>&1", provider_list[i]);
-		if (system(cmd) == 0 && mem_cmd != -1) {
-			free(cmd);
-			return provider_list[i];
+		if (asprintf(&cmd, "which %s > /dev/null 2>&1", provider_list[i]) == -1) {
+			return NULL;
 		}
+		int sys = system(cmd);
 		free(cmd);
+		switch (sys) {
+			case -1:
+				return NULL;
+			case 0:
+				return provider_list[i];
+			default:
+				continue;
+		}
 	}
 	return NULL;
 }
@@ -37,9 +43,8 @@ int open_link(char link[]) {
 		return -1;
 	}
 	char* cmd;
-	int mem_cmd = asprintf(&cmd, "%s %s > /dev/null 2>&1", open, link);
-	if (mem_cmd == -1) {
-		return mem_cmd;
+	if (asprintf(&cmd, "%s '%s' > /dev/null 2>&1", open, link) == -1) {
+		return -1;
 	}
 	int res = system(cmd);
 	free(cmd);
