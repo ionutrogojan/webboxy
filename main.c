@@ -1,7 +1,4 @@
-#define ARRAY_LENGTH(array)  (sizeof(array) / sizeof((array)[0]))
-
-#include <stdio.h>
-#include "lib/weblink.h"
+#include "weblink.h"
 
 int main() {
 	char* links[] = {

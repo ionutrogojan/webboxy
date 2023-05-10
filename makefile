@@ -1,8 +1,9 @@
 default : main.c
-	gcc -std=gnu99 main.c lib/weblink.c -o webboxy.o
+	gcc main.c -o webboxy
 
 dev : main.c
-	gcc -std=gnu99 main.c lib/weblink.c -o webboxy-dev.o
+	-gcc main.c -o webboxy-dev.o
+	-./webboxy-dev.o
 
 clean :
 	-rm -f webboxy.o

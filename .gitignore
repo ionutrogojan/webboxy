@@ -3,3 +3,4 @@ release
 webboxy
 *.desktop
 *.o
+my_asprintf.c
